@@ -8,23 +8,28 @@ function generateFaces() {
     for(var i =0; i < numberOfFaces; i++) {
         var img = document.createElement("img"); 
         img.src="smiley-face.png"
-        var left = Math.random()*401;
+        var left = Math.random()*400;
         left = Math.floor(left);
-        var top = Math.random()*401;
-        top = (Math.floor(top)+100);
+        var top = Math.random()*400;
+        top = (Math.floor(top)+1);
         img.style.left = left + "px";
         img.style.top = top + "px";
         theLeftSide.appendChild(img);
     }
-        //right part
-        var leftSideImages;
-        leftSideImages = theLeftSide.cloneNode(true);
+
+        var leftSideImages = theLeftSide.cloneNode(true);
         leftSideImages.removeChild(leftSideImages.lastElementChild);
         theRightSide.appendChild(leftSideImages);
 
         theLeftSide.lastChild.onclick=function nextLevel(event){
             event.stopPropagation();
             numberOfFaces += 5;
+            while (theLeftSide.firstChild) {
+                theLeftSide.removeChild(theLeftSide.firstChild);
+              }
+            while (theRightSide.firstChild) {
+                theRightSide.removeChild(theRightSide.firstChild);
+              }
             generateFaces();
          };
 
