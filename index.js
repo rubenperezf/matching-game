@@ -17,35 +17,35 @@ function generateFaces() {
         theLeftSide.appendChild(img);
     }
 
-        var leftSideImages = theLeftSide.cloneNode(true);
-        leftSideImages.removeChild(leftSideImages.lastElementChild);
-        theRightSide.appendChild(leftSideImages);
+    var leftSideImages = theLeftSide.cloneNode(true);
+    leftSideImages.removeChild(leftSideImages.lastElementChild);
+    theRightSide.appendChild(leftSideImages);
 
-        theLeftSide.lastChild.onclick=function nextLevel(event){
-            event.stopPropagation();
-            numberOfFaces += 5;
-            while (theLeftSide.firstChild) {
-                theLeftSide.removeChild(theLeftSide.firstChild);
-              }
-            while (theRightSide.firstChild) {
-                theRightSide.removeChild(theRightSide.firstChild);
-              }
-            generateFaces();
-         };
+    theLeftSide.lastChild.onclick=function nextLevel(event){
+        event.stopPropagation();
+        numberOfFaces += 5;
+        while (theLeftSide.firstChild) {
+            theLeftSide.removeChild(theLeftSide.firstChild);
+        }
+        while (theRightSide.firstChild) {
+            theRightSide.removeChild(theRightSide.firstChild);
+        }
+        generateFaces();
+    };
 
-         theBody.onclick = function gameOver() {
-            alert("Game Over!");
-            theBody.onclick = null;
-            theLeftSide.lastChild.onclick = null;
-            while (theLeftSide.firstChild) {
-                theLeftSide.removeChild(theLeftSide.firstChild);
-              }
-            while (theRightSide.firstChild) {
-                theRightSide.removeChild(theRightSide.firstChild);
-              }
-              numberOfFaces = 5;
-              generateFaces();
-         }; 
+    theBody.onclick = function gameOver() {
+        alert("Game Over!");
+        theBody.onclick = null;
+        theLeftSide.lastChild.onclick = null;
+        while (theLeftSide.firstChild) {                
+            theLeftSide.removeChild(theLeftSide.firstChild);
+            }
+        while (theRightSide.firstChild) {
+            theRightSide.removeChild(theRightSide.firstChild);
+            }
+        numberOfFaces = 5;
+        generateFaces();
+    }; 
          
         
 }
